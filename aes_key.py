@@ -1,4 +1,3 @@
-# derive_aes_keys.py
 import base64, hmac, hashlib
 from descrypt_key import get_sqlcipher_key
 from modernkey import get_modernkey_base64
@@ -16,7 +15,7 @@ if __name__ == "__main__":
         print("[!] modernKey 추출 실패")
         exit(1)
 
-    # base64 디코딩 + padding 처리
+
     modernkey_b64 += "=" * ((4 - len(modernkey_b64) % 4) % 4)
     modernkey_bytes = base64.b64decode(modernkey_b64)
 

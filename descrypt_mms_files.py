@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     for filename, data_random in data_random_list:
         input_path = os.path.join(mms_dir, filename)
-        output_path = os.path.join(des_dir, filename + ".jpg")  # 확장자 자동 지정 필요시 후처리
+        output_path = os.path.join(des_dir, filename + ".jpg")  
 
         derived_key = derive_aes_key(modernkey_bytes, data_random)
         decrypt_mms_file(input_path, output_path, derived_key)

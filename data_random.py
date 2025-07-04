@@ -1,4 +1,3 @@
-# data_random.py
 from sqlcipher3 import dbapi2 as sqlcipher
 import os
 from descrypt_key import get_sqlcipher_key

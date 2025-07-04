@@ -1,12 +1,12 @@
 import os
 import subprocess
 
-# 경로 정의
+
 APP_PARTS_DIR = "/data/data/org.thoughtcrime.securesms/app_parts/"
 LOCAL_MMS_DIR = "mms_files"
 LOCAL_EXTRA_DIR = "extracted_files"
 
-# 추가 파일 목록
+
 EXTRACTION_TARGETS = {
     "preferences": "/data/data/org.thoughtcrime.securesms/shared_prefs/org.thoughtcrime.securesms_preferences.xml",
     "signal_db": "/data/data/org.thoughtcrime.securesms/databases/signal.db",
@@ -20,13 +20,13 @@ def su_cp(remote_path, local_path):
     print(f"[*] {remote_path} 추출 중...")
     temp_path = f"/sdcard/{os.path.basename(remote_path)}"
 
-    # su 권한으로 sdcard로 복사
+    
     run_shell_cmd(f"su -c 'cp {remote_path} {temp_path}'")
 
-    # sdcard에서 PC로 pull
+    
     subprocess.run(["adb", "pull", temp_path, local_path])
 
-    # sdcard 임시 파일 삭제
+    
     run_shell_cmd(f"rm {temp_path}")
 
 def extract_all_mms():
