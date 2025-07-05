@@ -56,7 +56,7 @@ python decrypt_mms_files.py
 /sdcard/persistent.sqlite: 1 file pulled, 0 skipped. 10.1 MB/s (139264 bytes in 0.013s)
 [+] 설정, DB, keystore 파일 추출 완료
 ```
-
+<br><br>
 ### preferences_attachment, database.py
 
 Signal 메신저의 /share_pref/org.thoughtcrime.securesms_preferences.xml 파일에서 SQLCipher에 사용된 패스프레이즈를 추출
@@ -79,7 +79,7 @@ Signal 메신저의 /share_pref/org.thoughtcrime.securesms_preferences.xml 파�
 [+] GCM Tag (hex): 493f4c179925577422fc8a06364c76b9
 [+] Ciphertext (input, hex): 4d1ae77b7d4552478fdcecf97bd65bd0c05eaa3278d4bae62707287aa45a782abf5bcc7c66aef194a2b4735d54c5c382ad81bcaee328cdb48ef0820c2a150ab4a67693279a27c00bc1463b795865e4747d0927da45f7fb9b400d4e19cda046f8b3acab26848f2f9b
 ```
-
+<br><br>
 ### persistent.py
 
 Android 기기에서 추출한 Signal 메신저의 `persistent.sqlite` 키스토어 DB에서 `SignalSecret` alias에 해당하는 복호화 키(16바이트)를 자동으로 추출하는 코드입니다.
@@ -91,7 +91,7 @@ Android 기기에서 추출한 Signal 메신저의 `persistent.sqlite` 키스토
 [+] SignalSecret #2 id: 6456924783388765775
     → 추출된 복호화 키 (16바이트 hex): d843d662011f92d82c69659c4311904f
 ```
-
+<br><br>
 ### modernkey.py
 
 Signal 메신저의 설정 파일과 키 저장소를 이용하여, 첨부파일(.mms 등) 복호화에 사용되는 `modernKey` 값을 자동으로 복호화하고 출력
@@ -100,7 +100,7 @@ Signal 메신저의 설정 파일과 키 저장소를 이용하여, 첨부파일
 [실행 결과]
 [+] modernKey (base64): HQO/GTzksS8QwavfHEsHUFCzQeAadbAI3vFEERRNkQQ
 ```
-
+<br><br>
 ### data_random
 
 Signal 메신저 데이터베이스(signal.db)에서 첨부파일 복호화에 필요한 `data_random` 값을 추출합니다. 추출된 `data_random`은 `modernKey`와 함께 HMAC-SHA256을 이용해 AES 복호화 키를 생성하는 데 사용됩니다.
@@ -118,7 +118,7 @@ Signal 메신저 데이터베이스(signal.db)에서 첨부파일 복호화에 �
 [+] part6570248723912832133.mms → data_random (hex): 85e5761071da3b8b2211d1a218ba58b1c45857f1cc081534d3e744d1e44a9ccd
 [+] 매칭된 mms 파일 수: 5
 ```
-
+<br><br>
 ### aes_key.py
 
 Signal 메신저에서 전송된 .mms 임시파일을 복호화하기 위한 AES 키 ****를 자동으로 파생합니다.
@@ -134,7 +134,7 @@ modernKey, data_random, 그리고 HMAC-SHA256 알고리즘을 통해 각 파일�
  - part8371684658587393699.mms → AES Key: 0550d123e5c488704b005cbc3a8b25ea34edbc19038d5bf7a1cf750dd9edc3ab        
  - part6570248723912832133.mms → AES Key: 6b65b8362775873002770e3fb94c3fb9a493aa17113cc85f73607e368f29c3cb
 ```
-
+<br><br>
 ### descrypt_mms_files.py
 
 Signal 메신저의 암호화된 `.mms` 첨부파일을 자동으로 복호화하여 원본 이미지 파일(.jpg)로 복원해주는 코드입니다.
