@@ -20,6 +20,8 @@ python decrypt_mms_files.py
 ```bash
 pip install pycryptodome
 pip install sqlcipher3-wheels
+pip install python-magic
+pip install python-magic-bin
 ```
 
 <br><br>
@@ -47,26 +49,26 @@ pip install sqlcipher3-wheels
 [*] .mms 파일 목록 수집 중...
 [+] 총 5개의 .mms 파일 발견됨
 [*] /data/data/org.thoughtcrime.securesms/app_parts/part1290661725492059278.mms 추출 중...
-/sdcard/part1290661725492059278.mms: 1 file pulled, 0 skipped. 0.9 MB/s (101562 bytes in 0.105s)
+/sdcard/part1290661725492059278.mms: 1 file pulled, 0 skipped. 14.2 MB/s (101562 bytes in 0.007s)
 [*] /data/data/org.thoughtcrime.securesms/app_parts/part1341555342137450792.mms 추출 중...
-/sdcard/part1341555342137450792.mms: 1 file pulled, 0 skipped. 11.8 MB/s (101499 bytes in 0.008s)
+/sdcard/part1341555342137450792.mms: 1 file pulled, 0 skipped. 17.9 MB/s (101499 bytes in 0.005s)
 [*] /data/data/org.thoughtcrime.securesms/app_parts/part3288898270585642176.mms 추출 중...
-/sdcard/part3288898270585642176.mms: 1 file pulled, 0 skipped. 2.6 MB/s (100497 bytes in 0.037s)
+/sdcard/part3288898270585642176.mms: 1 file pulled, 0 skipped. 17.7 MB/s (100497 bytes in 0.005s)
 [*] /data/data/org.thoughtcrime.securesms/app_parts/part6570248723912832133.mms 추출 중...
-/sdcard/part6570248723912832133.mms: 1 file pulled, 0 skipped. 4.2 MB/s (100904 bytes in 0.023s)
+/sdcard/part6570248723912832133.mms: 1 file pulled, 0 skipped. 12.2 MB/s (100904 bytes in 0.008s)
 [*] /data/data/org.thoughtcrime.securesms/app_parts/part8371684658587393699.mms 추출 중...
-/sdcard/part8371684658587393699.mms: 1 file pulled, 0 skipped. 5.4 MB/s (100772 bytes in 0.018s)
+/sdcard/part8371684658587393699.mms: 1 file pulled, 0 skipped. 19.0 MB/s (100772 bytes in 0.005s)
 [+] .mms 파일 추출 완료
 [*] /data/data/org.thoughtcrime.securesms/shared_prefs/org.thoughtcrime.securesms_preferences.xml 추출 중...
-/sdcard/org.thoughtcrime.securesms_preferences.xml: 1 file pulled, 0 skipped. 0.1 MB/s (2142 bytes in 0.020s)
+/sdcard/org.thoughtcrime.securesms_preferences.xml: 1 file pulled, 0 skipped. 0.5 MB/s (2142 bytes in 0.004s)     
 [*] /data/data/org.thoughtcrime.securesms/databases/signal.db 추출 중...
-/sdcard/signal.db: 1 file pulled, 0 skipped. 17.9 MB/s (3219456 bytes in 0.172s)
+/sdcard/signal.db: 1 file pulled, 0 skipped. 34.0 MB/s (3219456 bytes in 0.090s)
 [*] /data/misc/keystore/persistent.sqlite 추출 중...
-/sdcard/persistent.sqlite: 1 file pulled, 0 skipped. 10.1 MB/s (139264 bytes in 0.013s)
+/sdcard/persistent.sqlite: 1 file pulled, 0 skipped. 19.8 MB/s (139264 bytes in 0.007s)
 [+] 설정, DB, keystore 파일 추출 완료
 ```
 <br><br>
-### preferences_attachment, database.py
+### preferences_database, attachment.py
 
 Signal 메신저의 /share_pref/org.thoughtcrime.securesms_preferences.xml 파일에서 SQLCipher에 사용된 패스프레이즈를 추출
 - `data (hex)`
@@ -110,7 +112,7 @@ Signal 메신저의 설정 파일과 키 저장소를 이용하여, 첨부파일
 [+] modernKey (base64): HQO/GTzksS8QwavfHEsHUFCzQeAadbAI3vFEERRNkQQ
 ```
 <br><br>
-### data_random
+### data_random.py
 
 Signal 메신저 데이터베이스(signal.db)에서 첨부파일 복호화에 필요한 `data_random` 값을 추출합니다. 추출된 `data_random`은 `modernKey`와 함께 HMAC-SHA256을 이용해 AES 복호화 키를 생성하는 데 사용됩니다.
 
@@ -130,7 +132,7 @@ Signal 메신저 데이터베이스(signal.db)에서 첨부파일 복호화에 �
 <br><br>
 ### aes_key.py
 
-Signal 메신저에서 전송된 .mms 임시파일을 복호화하기 위한 AES 키 ****를 자동으로 파생합니다.
+Signal 메신저에서 전송된 .mms 임시파일을 복호화하기 위한 AES 키를 자동으로 파생합니다.
 
 modernKey, data_random, 그리고 HMAC-SHA256 알고리즘을 통해 각 파일에 대응되는 256비트 AES 키를 생성합니다.
 
@@ -146,7 +148,7 @@ modernKey, data_random, 그리고 HMAC-SHA256 알고리즘을 통해 각 파일�
 <br><br>
 ### descrypt_mms_files.py
 
-Signal 메신저의 암호화된 `.mms` 첨부파일을 자동으로 복호화하여 원본 이미지 파일(.jpg)로 복원해주는 코드입니다.
+Signal 메신저의 암호화된 `.mms` 첨부파일을 자동으로 복호화하여 원본 이미지, 문서 파일(.jpg, .png, .doc, .docx, .hwp, .pdf ...)로 복원해주는 코드입니다.
 
 복원된 원본 이미지 파일은 des_mms_files/ 디렉터리에 저장
 
