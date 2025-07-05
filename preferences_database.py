@@ -35,7 +35,7 @@ def extract_and_convert_data_iv(xml_path):
         print(f"[!] 오류 발생: {e}")
         return None, None, None
 
-# 사용 예시
+
 if __name__ == "__main__":
     xml_path = "extracted_files/org.thoughtcrime.securesms_preferences.xml"
     extract_and_convert_data_iv(xml_path)
