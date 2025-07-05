@@ -1,22 +1,8 @@
-# Signal MMS Decryptor 🔐
+# Signal_auto_descrypt_mms 🔐
 
 복호화되지 않은 Signal .mms 파일을 복호화하는 코드입니다.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br><br>
 
 ## 🧪 사용법
 
@@ -25,7 +11,7 @@ python pull.py
 python decrypt_mms_files.py
 ```
 
-
+<br><br>
 
 ## 🔧 코드 설명
 
