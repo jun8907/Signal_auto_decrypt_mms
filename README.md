@@ -9,6 +9,7 @@
 ```bash
 git clone https://github.com/jun8907/Signal_auto_descrypt_mms.git
 cd Signal_auto_descrypt_mms
+pip install -r requirements.txt
 python pull.py
 python decrypt_mms_files.py
 ```
