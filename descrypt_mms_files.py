@@ -38,7 +38,7 @@ def get_file_extension(decrypted_data):
     'video/quicktime': '.mov'
     }
 
-    return ext_map.get(mime_type, '.bin')  
+    return ext_map.get(mime_type, '.dat')  
 
 if __name__ == "__main__":
     modernkey_b64 = get_modernkey_base64(
