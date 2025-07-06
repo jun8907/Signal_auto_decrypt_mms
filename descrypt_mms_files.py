@@ -25,17 +25,17 @@ def get_file_extension(decrypted_data):
     mime_type = mime.from_buffer(decrypted_data)
 
     ext_map = {
-        'image/jpeg': '.jpg',
-        'image/png': '.png',
-        'image/webp': '.webp',
-        'application/pdf': '.pdf',
-        'application/zip': '.zip',
-        'application/msword': '.doc',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document': '.docx',
-        'application/vnd.ms-powerpoint': '.ppt',
-        'application/vnd.openxmlformats-officedocument.presentationml.presentation': '.pptx',
-        'application/x-hwp': '.hwp',  
-        'text/plain': '.txt',
+    'image/jpeg': '.jpg',
+    'application/pdf': '.pdf',
+    'application/zip': '.zip',
+    'application/msword': '.doc',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': '.docx',
+    'application/vnd.ms-powerpoint': '.ppt',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation': '.pptx',
+    'application/x-hwp': '.hwp',
+    'text/plain': '.txt',    
+    'video/mp4': '.mp4',
+    'video/quicktime': '.mov'
     }
 
     return ext_map.get(mime_type, '.bin')  

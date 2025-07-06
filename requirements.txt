@@ -1,0 +1,4 @@
+pycryptodome
+sqlcipher3-wheels
+python-magic
+python-magic-bin
