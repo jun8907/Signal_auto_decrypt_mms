@@ -1,5 +1,5 @@
 import base64, hmac, hashlib
-from descrypt_key import get_sqlcipher_key
+from decrypt_key import get_sqlcipher_key
 from modernkey import get_modernkey_base64
 from data_random import get_data_randoms
 

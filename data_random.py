@@ -1,6 +1,6 @@
 from sqlcipher3 import dbapi2 as sqlcipher
 import os
-from descrypt_key import get_sqlcipher_key
+from decrypt_key import get_sqlcipher_key
 
 def extract_data_random_for_mms(encrypted_db_path, key_plaintext, mms_folder):
     results = get_data_randoms(encrypted_db_path, key_plaintext, mms_folder)
