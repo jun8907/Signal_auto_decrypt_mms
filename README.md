@@ -1,4 +1,4 @@
-# Signal_auto_descrypt_mms 🔐
+# Signal_auto_decrypt_mms 🔐
 
 복호화되지 않은 Signal .mms 파일을 복호화하는 코드입니다.
 
@@ -7,8 +7,8 @@
 ## 🧪 사용법
 
 ```bash
-git clone https://github.com/jun8907/Signal_auto_descrypt_mms.git
-cd Signal_auto_descrypt_mms
+git clone https://github.com/jun8907/Signal_auto_decrypt_mms.git
+cd Signal_auto_decrypt_mms
 pip install -r requirements.txt
 python pull.py
 python decrypt_mms_files.py
@@ -34,10 +34,10 @@ pip install python-magic-bin
 - preferences_database.py
 - persistent.py
 - modernkey.py
-- descrypt_key.py
+- decrypt_key.py
 - data_random.py
 - aes_key.py
-- descrypt_mms_files.py
+- decrypt_mms_files.py
 <br><br>
 ### pull.py
 
@@ -147,19 +147,19 @@ modernKey, data_random, 그리고 HMAC-SHA256 알고리즘을 통해 각 파일�
  - part6570248723912832133.mms → AES Key: 6b65b8362775873002770e3fb94c3fb9a493aa17113cc85f73607e368f29c3cb
 ```
 <br><br>
-### descrypt_mms_files.py
+### deccrypt_mms_files.py
 
 Signal 메신저의 암호화된 `.mms` 첨부파일을 자동으로 복호화하여 원본 이미지, 문서 파일(.jpg, .png, .doc, .docx, .hwp, .pdf ...)로 복원해주는 코드입니다.
 
-복원된 원본 이미지 파일은 des_mms_files/ 디렉터리에 저장
+복원된 원본 이미지 파일은 dec_mms_files/ 디렉터리에 저장
 
 ```python
 [실행 결과]
 [+] 총 5개 .mms 파일 복호화 중...
-[+] part1290661725492059278.mms → 복호화 완료 → des_mms_files\part1290661725492059278.mms.jpg
-[+] part3288898270585642176.mms → 복호화 완료 → des_mms_files\part3288898270585642176.mms.jpg
-[+] part1341555342137450792.mms → 복호화 완료 → des_mms_files\part1341555342137450792.mms.jpg
-[+] part8371684658587393699.mms → 복호화 완료 → des_mms_files\part8371684658587393699.mms.jpg
-[+] part6570248723912832133.mms → 복호화 완료 → des_mms_files\part6570248723912832133.mms.jpg
+[+] part1290661725492059278.mms → 복호화 완료 → dec_mms_files\part1290661725492059278.mms.jpg
+[+] part3288898270585642176.mms → 복호화 완료 → dec_mms_files\part3288898270585642176.mms.jpg
+[+] part1341555342137450792.mms → 복호화 완료 → dec_mms_files\part1341555342137450792.mms.jpg
+[+] part8371684658587393699.mms → 복호화 완료 → dec_mms_files\part8371684658587393699.mms.jpg
+[+] part6570248723912832133.mms → 복호화 완료 → dec_mms_files\part6570248723912832133.mms.jpg
 ```
 
