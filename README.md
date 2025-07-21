@@ -7,11 +7,11 @@
 ## 🧪 사용법
 
 ```bash
-git clone https://github.com/jun8907/Signal_auto_decrypt_mms.git
-cd Signal_auto_decrypt_mms
-pip install -r requirements.txt
-python pull.py
-python decrypt_mms_files.py
+> git clone https://github.com/jun8907/Signal_auto_decrypt_mms.git
+> cd Signal_auto_decrypt_mms
+> pip install -r requirements.txt
+> python pull.py
+> python decrypt_mms_files.py
 ```
 
 <br><br>
@@ -19,10 +19,10 @@ python decrypt_mms_files.py
 ## 📖 관련 라이브러리 설치
 
 ```bash
-pip install pycryptodome
-pip install sqlcipher3-wheels
-pip install python-magic
-pip install python-magic-bin
+> pip install pycryptodome
+> pip install sqlcipher3-wheels
+> pip install python-magic
+> pip install python-magic-bin
 ```
 
 <br><br>
